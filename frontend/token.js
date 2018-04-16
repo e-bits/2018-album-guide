@@ -1,6 +1,6 @@
 function setRequestTokenLink() {
   document.querySelector('[js-request-token]').addEventListener('click', () => {
-    fetch(`${getUrl()}/albuns`, {
+    fetch(`${getUrl()}/albums`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -13,6 +13,6 @@ function setRequestTokenLink() {
         document.querySelector('#album-token').value = json.token;
         document.querySelector('.js-btn-token').click();
       })
-    }).catch((err) => { alert("Não foi possível criar um novo Token"); });
+    }).catch((err) => { alert("It wasn't possible to raise a new Token."); });
   });
 }

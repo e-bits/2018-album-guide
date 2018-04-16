@@ -28,7 +28,7 @@ function populateAlbum() {
       stickerButton.addEventListener('click', () => {
         const mode = localStorage.getItem('mode');
         if (mode == 'write' || mode == 'delete') {
-          fetch(`${getUrl()}/albuns/${getTokenFromStorage()}`, {
+          fetch(`${getUrl()}/albums/${getTokenFromStorage()}`, {
             method: 'put',
             headers: {
               'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function populateAlbum() {
             body: JSON.stringify({ stickers: { [sticker]: (mode == 'write') } })
           })
           .then((response) => updateAlbum(response.json()))
-          .catch((err) => alert('Não foi possível atualizar os dados do álbum'));
+          .catch((err) => alert("It wasn't possible to update the album's data"));
         }
       });
     });
@@ -52,14 +52,14 @@ function populateTokenForm() {
   setRequestTokenLink();
   document.querySelector('.js-btn-token').addEventListener('click', () => {
     tokenId = document.querySelector('#album-token').value;
-    fetch(`${getUrl()}/albuns/${tokenId}`)
+    fetch(`${getUrl()}/albums/${tokenId}`)
     .then((result) => {
       localStorage.setItem('albumToken', tokenId);
       setupAlbum(result.json());
     })
     .catch((err) => {
       albumNode.innerHTML = JSON.stringify(err);
-      alert("Não foi possível configurar o Token");
+      alert("It was not possible to configure the Token");
     });
   });
   document.querySelector('.nav-status').classList.add('hidden');
@@ -67,9 +67,9 @@ function populateTokenForm() {
 
 function setupAlbum(contentPromise) {
   if (!contentPromise) {
-    return fetch(`${getUrl()}/albuns/${getTokenFromStorage()}`)
+    return fetch(`${getUrl()}/albums/${getTokenFromStorage()}`)
     .then((result) => setupAlbum(result.json()))
-    .catch((err) => { alert("Não foi possível sincronizar usando este Token"); });
+    .catch((err) => { alert("It wasn't possible to synchronize using this token"); });
   } else {
     return contentPromise.then(({ stickers }) => {
       populateAlbum();

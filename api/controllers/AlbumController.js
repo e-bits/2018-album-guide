@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Album = mongoose.model('Albuns');
+const Album = mongoose.model('Albums');
 
 module.exports = {
   createAlbum: (request, response) => {

@@ -1,7 +1,7 @@
 const Mongoose = require('mongoose');
 
 module.exports = {
-  Album: Mongoose.model('Albuns', new Mongoose.Schema({
+  Album: Mongoose.model('Albums', new Mongoose.Schema({
     name: {
       type: String,
       required: true

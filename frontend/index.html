@@ -12,9 +12,9 @@
     crossorigin="anonymous">
   <link href="style.css" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
-  <title>Guia Álbum da Copa</title>
+  <title>Cup Album Guide</title>
   <link rel="apple-touch-icon" sizes="167x167" href="icon-ios.png">
-  <meta name="apple-mobile-web-app-title" content="Guia Álbum 2018">
+  <meta name="apple-mobile-web-app-title" content="Cup Album Guide 2018">
   <script type="text/javascript" src="model.js"></script>
   <script type="text/javascript" src="token.js"></script>
   <script type="text/javascript" src="./copy.js"></script>
@@ -24,7 +24,7 @@
   <nav class="navbar navbar-light bg-light sticky-top">
     <a class="navbar-brand" href="#">
       <img src="russia-2018.svg" width="30" height="30"
-          class="d-inline-block align-top" alt=""> Guia do Álbum da Copa
+          class="d-inline-block align-top" alt=""> Cup Album Guide
     </a>
     <div class="btn-block nav-status">
       <div class="row">
@@ -43,15 +43,15 @@
         </div>
       </div>
       <p class="text-sm">
-        <b>Meu Álbum: </b>
+        <b>New Album: </b>
         <span js-filled-count="">0</span> de <span js-total-count="">0</span>
         (<span js-status-percent="">0</span>%) |
         Faltam: <a js-copy href=""><span js-remaining-count="">0</span></a>
       </p>
       <p class="text-sm">
-        <b>Meu Token: </b>
-        <a class="m-r" js-option="copyToken" href="#"><i class="fa fa-clipboard"></i> Copiar</a>
-        <a js-option="eraseKey" href="#"><i class="fa fa-sign-out"></i> Sair</a>
+        <b>New Token: </b>
+        <a class="m-r" js-option="copyToken" href="#"><i class="fa fa-clipboard"></i> Copy</a>
+        <a js-option="eraseKey" href="#"><i class="fa fa-sign-out"></i> Clear</a>
       </p>
     </div>
   </nav>
@@ -62,16 +62,16 @@
       <div class="col">
         <div class="card w-100">
           <div class="card-body">
-            <h1>Configurar Álbum</h1>
-            <p>Informe o Token do Álbum que deseja gerenciar:</p>
+            <h1>Configure Album</h1>
+            <p>Report the Token of the Album you wish to manage:</p>
             <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="" id="album-token">
               <div class="input-group-append">
-                <button class="btn btn-primary js-btn-token" type="button">Confirmar</button>
+                <button class="btn btn-primary js-btn-token" type="button">Confirm</button>
               </div>
             </div>
 
-            <p class="text-sm"><a href="#" js-request-token>Não tenho um token ainda. Criar um Token agora.</a></p>
+            <p class="text-sm"><a href="#" js-request-token>I don't have a token yet. Create a Token now.</a></p>
           </div>
         </div>
       </div>
