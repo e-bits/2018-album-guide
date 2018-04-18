@@ -28,8 +28,8 @@ function populateAlbum() {
       stickerButton.addEventListener('click', () => {
         const mode = localStorage.getItem('mode');
         if (mode == 'write' || mode == 'delete') {
-          fetch(`${getUrl()}/albums/${getTokenFromStorage()}`, {
-            method: 'put',
+          fetch(`${getUrl()}/albuns/${getTokenFromStorage()}`, {
+            method: 'post',
             headers: {
               'Content-Type': 'application/json'
             },
@@ -52,7 +52,7 @@ function populateTokenForm() {
   setRequestTokenLink();
   document.querySelector('.js-btn-token').addEventListener('click', () => {
     tokenId = document.querySelector('#album-token').value;
-    fetch(`${getUrl()}/albums/${tokenId}`)
+    fetch(`${getUrl()}/albuns/${tokenId}`)
     .then((result) => {
       localStorage.setItem('albumToken', tokenId);
       setupAlbum(result.json());
@@ -67,7 +67,7 @@ function populateTokenForm() {
 
 function setupAlbum(contentPromise) {
   if (!contentPromise) {
-    return fetch(`${getUrl()}/albums/${getTokenFromStorage()}`)
+    return fetch(`${getUrl()}/albuns/${getTokenFromStorage()}`)
     .then((result) => setupAlbum(result.json()))
     .catch((err) => { alert("It wasn't possible to synchronize using this token"); });
   } else {
@@ -119,7 +119,7 @@ function getTokenFromStorage() {
 }
 
 function getUrl() {
-  return 'http://stickers-2018.us-3.evennode.com'
+  return 'http://localhost:3000'
 }
 
 init();

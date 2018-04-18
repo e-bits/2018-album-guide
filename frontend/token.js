@@ -1,6 +1,6 @@
 function setRequestTokenLink() {
   document.querySelector('[js-request-token]').addEventListener('click', () => {
-    fetch(`${getUrl()}/albums`, {
+    fetch(`${getUrl()}/albuns`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

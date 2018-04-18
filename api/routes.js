@@ -1,11 +1,11 @@
 module.exports = function (app) {
   const AlbumController = require('./controllers/AlbumController');
 
-  app.route('/albums')
+  app.route('/albuns')
     .post(AlbumController.createAlbum);
 
-  app.route('/albums/:albumId')
+  app.route('/albuns/:albumId')
     .get(AlbumController.getAlbum)
-    .put(AlbumController.postStickers)
+    .post(AlbumController.postStickers)
     .delete(AlbumController.deleteAlbum);
 };
