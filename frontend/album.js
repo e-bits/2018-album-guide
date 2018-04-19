@@ -101,10 +101,14 @@ function updateStatusesCount() {
   const totalStickers = document.querySelectorAll('[js-sticker-button]').length;
   const filledStickers = document.querySelectorAll('[js-sticker-filled="true"]').length;
 
+  const token = document.querySelector("span[js-token]");
+
   totalCountStatus.textContent = totalStickers;
   filledCountStatus.textContent = filledStickers;
   remainingCountStatus.textContent = totalStickers - filledStickers;
   statusPercentStatus.textContent = Math.round(100 * filledStickers / totalStickers);
+
+  token.textContent = albumToken;
 
   document.querySelectorAll('.section').forEach((section) => {
     let sectionTotal = section.querySelectorAll('[js-sticker-button]').length;
