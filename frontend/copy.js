@@ -43,7 +43,7 @@ window.Clipboard = (function (window, document, navigator) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const getMissingStickersText = function () {
-    let text = 'Minha lista de faltantes é:\n';
+    let text = 'My list of missing items is:\n';
     document.querySelectorAll('[js-sticker-button]').forEach((node) => {
       if (node.getAttribute('js-sticker-filled') !== 'true') {
         text = text.concat(node.getAttribute('js-sticker-id') + ' - ')
