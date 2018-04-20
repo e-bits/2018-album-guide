@@ -29,14 +29,14 @@ function populateAlbum() {
         const mode = localStorage.getItem('mode');
         if (mode == 'write' || mode == 'delete') {
           fetch(`${getUrl()}/albuns/${getTokenFromStorage()}`, {
-            method: 'put',
+            method: 'post',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ stickers: { [sticker]: (mode == 'write') } })
           })
           .then((response) => updateAlbum(response.json()))
-          .catch((err) => alert('Não foi possível atualizar os dados do álbum'));
+          .catch((err) => alert("It wasn't possible to update the album's data"));
         }
       });
     });
@@ -59,7 +59,7 @@ function populateTokenForm() {
     })
     .catch((err) => {
       albumNode.innerHTML = JSON.stringify(err);
-      alert("Não foi possível configurar o Token");
+      alert("It was not possible to configure the Token");
     });
   });
   document.querySelector('.nav-status').classList.add('hidden');
@@ -69,7 +69,7 @@ function setupAlbum(contentPromise) {
   if (!contentPromise) {
     return fetch(`${getUrl()}/albuns/${getTokenFromStorage()}`)
     .then((result) => setupAlbum(result.json()))
-    .catch((err) => { alert("Não foi possível sincronizar usando este Token"); });
+    .catch((err) => { alert("It wasn't possible to synchronize using this token"); });
   } else {
     return contentPromise.then(({ stickers }) => {
       populateAlbum();
@@ -101,10 +101,14 @@ function updateStatusesCount() {
   const totalStickers = document.querySelectorAll('[js-sticker-button]').length;
   const filledStickers = document.querySelectorAll('[js-sticker-filled="true"]').length;
 
+  const token = document.querySelector("span[js-token]");
+
   totalCountStatus.textContent = totalStickers;
   filledCountStatus.textContent = filledStickers;
   remainingCountStatus.textContent = totalStickers - filledStickers;
   statusPercentStatus.textContent = Math.round(100 * filledStickers / totalStickers);
+
+  token.textContent = albumToken;
 
   document.querySelectorAll('.section').forEach((section) => {
     let sectionTotal = section.querySelectorAll('[js-sticker-button]').length;
@@ -119,7 +123,7 @@ function getTokenFromStorage() {
 }
 
 function getUrl() {
-  return 'http://stickers-2018.us-3.evennode.com'
+  return 'http://localhost:3000'
 }
 
 init();
