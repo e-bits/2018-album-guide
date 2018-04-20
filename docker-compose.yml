@@ -1,0 +1,37 @@
+version: '3.1'
+
+volumes:
+  mongo_db: {}
+
+networks:
+  front-tier:
+  back-tier:
+
+services:
+  db:
+    image: mongo
+    volumes:
+      - mongo_db:/data/db
+    networks:
+      - back-tier   
+
+  api:
+    build:
+      context: ./api/
+      dockerfile: ./api/Dockerfile
+    ports:
+      - 3000:3000      
+    environment:
+      - MONGODB_URL=mongodb://db:27017
+    networks:
+      - front-tier   
+      - back-tier   
+
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: ./frontend/Dockerfile
+    ports:
+      - 2015:2015
+    networks:
+      - front-tier   
